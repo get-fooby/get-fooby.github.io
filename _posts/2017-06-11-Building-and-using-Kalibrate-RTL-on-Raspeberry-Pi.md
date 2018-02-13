@@ -18,7 +18,8 @@ $ ./kal
 ```
 
 # Usage Guide
-```pi@raspberrypi:~/kalibrate-rtl/src $ ./kal -s EGSM
+```bash
+pi@raspberrypi:~/kalibrate-rtl/src $ ./kal -s EGSM
 Found 1 device(s):
  0: Generic RTL2832U OEM
 
@@ -28,7 +29,8 @@ Exact sample rate is: 270833.002142 Hz
 kal: Scanning for E-GSM-900 base stations.
 E-GSM-900:
  chan: 101 (955.2MHz + 18.409kHz) power: 28668.57
- chan: 114 (957.8MHz + 18.576kHz) power: 23934.29```
+ chan: 114 (957.8MHz + 18.576kHz) power: 23934.29
+```
 
 Once you have a channel or 2, choose the highest powered one (channel 101 above)
 
@@ -47,6 +49,7 @@ average [min, max] (range, stddev)
 + 19.346kHz [19315, 19376] (61, 16.454195)
 overruns: 0
 not found: 0
-average absolute error: -20.253 ppm```
+average absolute error: -20.253 ppm
+```
 
 This shows that my PPM value should be set to -20
