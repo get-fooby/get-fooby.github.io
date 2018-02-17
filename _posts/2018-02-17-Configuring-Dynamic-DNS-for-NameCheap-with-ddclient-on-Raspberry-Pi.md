@@ -1,0 +1,32 @@
+---
+title: Configuring Dynamic DNS for NameCheap with ddclient on Raspberry-Pi
+published: false
+---
+
+I've recently found my name server host (namecheap) supports Dynamic DNS updating of records, so I've added a tool called `ddclient` to my Raspberry Pi
+
+Here is how I have installed and configured this on Raspbian Jessie Lite (Nov 2017)
+
+`sudo apt install ddclient libio-socket-ssl-perl`
+
+I'm reasonably sure that the `libio-socket-ssl-perl` will be installed as part of `ddclient` anyway, but just in case this is added too.
+
+When you install `ddclient` you also have to follow through some text/GUI I skipped this, and typed nonsense to get past.
+
+## Creating the config file
+
+Edit the config file as such `sudo nano /etc/ddclient.conf`
+
+<script src="https://gist.github.com/get-fooby/059718fde16f7bf78f7231927052f59a.js"></script>
+
+Each of these lines is specific to NameCheap's config, and we've added `ssl=yes` to ensure the updating is over SSL, as the password NameCheap give can update any record.
+
+## Installing the `ddclient` service
+
+`nano /etc/default/ddclient`
+
+Add in the line `run_daemon=true` and ensure the other two options are set to false.
+
+We also need to ensure this is installed as a service, and restarts at bootup so 
+
+`systemctl enable ddclient.service` will install this as a service on Raspbian, for other O/S check https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-1-practical-examples
