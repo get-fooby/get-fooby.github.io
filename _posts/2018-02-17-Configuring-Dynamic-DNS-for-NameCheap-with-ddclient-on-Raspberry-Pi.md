@@ -37,8 +37,6 @@ Add in the line `run_daemon=true` and ensure the other two options are set to fa
 
 We also need to ensure this is installed as a service, and restarts at bootup so 
 
-`systemctl enable ddclient.service` will install this as a service on Raspbian, for other O/S check the link 
+`systemctl enable ddclient.service` will install this as a service on Raspbian, for other O/S check the link [DigitalOcean Linux Services Guide](https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-1-practical-examples)
 
-https://www.digitalocean.com/community/tutorials/how-to-configure-a-linux-service-to-start-automatically-after-a-crash-or-reboot-part-1-practical-examples
-
-Some content (and a lot more detail) from: https://samhobbs.co.uk/2015/01/dynamic-dns-ddclient-raspberry-pi-and-ubuntu
+Some content (and a lot more detail) from: [Sam Hobbs](https://samhobbs.co.uk/2015/01/dynamic-dns-ddclient-raspberry-pi-and-ubuntu)
