@@ -1,6 +1,6 @@
 ---
 title: Configuring Dynamic DNS for NameCheap with ddclient on Raspberry-Pi
-published: false
+published: true
 ---
 
 I've recently found my name server host (namecheap) supports Dynamic DNS updating of records, so I've added a tool called `ddclient` to my Raspberry Pi
