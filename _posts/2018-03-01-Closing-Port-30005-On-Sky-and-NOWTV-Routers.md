@@ -8,17 +8,17 @@ I've copied these instructions from close-port-30005.weebly.com just in case tha
 
 1. Open your router interface at http://192.168.0.1/
 1. Click Security
-1. Log in with username: admin password: sky
+1. Log in with username: `admin` password: `sky`
 1. Click Services > Add Custom Service
-1. Name: TR069
-1. Type: TCP
-1. Start Port: 30005
-1. Finish Port: 30005
+    * Name: `TR069`
+    * Type: `TCP`
+    * Start Port: `30005`
+    * Finish Port: `30005`
 1. Click Apply
 1. Click Firewall Rules
 1. Click Add under Inbound Services
-1. Service: TR069
-1. Action: Block always
+    * Service: `TR069`
+    * Action: `Block always`
 1. Click Apply
 
 Port 30005 is now closed. Firmware updates will still be enabled.
