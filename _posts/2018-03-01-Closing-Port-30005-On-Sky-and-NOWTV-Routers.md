@@ -1,10 +1,10 @@
 ---
 title: Closing Port 30005 On Sky and NOWTV Routers
-published: false
+published: true
 ---
 Saw this on the web after looking into some IoT research, it turns out that many routers have this port open, with no user interface that allows it to be closed.
 
-I've copied these instructions from close-port-30005.weebly.com just in case that website is ever lost.
+Apparently, Sky doesn't use the TR069 protocol, so it shouldn't need to be open. I think more research is needed before pressing ahead, in any case I've copied these instructions from `close-port-30005.weebly.com`.
 
 1. Open your router interface at http://192.168.0.1/
 1. Click Security
