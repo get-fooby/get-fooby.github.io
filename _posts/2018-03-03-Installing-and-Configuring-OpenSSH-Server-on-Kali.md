@@ -33,7 +33,7 @@ Instead of typing the password over the ssh session, OpenSSH supports public key
 
 ## Generate the keys
 
-Recently malware has been noted to collect private keys on behalf of the malicous actor and retain these for use at any point. Adding a passphrase is incredibly important. We can address the inconvenience of a passphrase for Windows clients later on.
+Recently malware has been noted to collect private keys and retain these for use at any point. Adding a passphrase is incredibly important. We can address the inconvenience of a passphrase for Windows clients later on.
 
 ### Generating keys on Windows with PuTTY Key Generator
 1. Open PuTTY Key Generator (`puttygen.exe`)
