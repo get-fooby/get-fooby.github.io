@@ -1,6 +1,6 @@
 ---
 title: Installing and Configuring OpenSSH on Kali
-published: false
+published: true
 ---
 
 # Installing OpenSSH
@@ -98,6 +98,7 @@ PermitRootLogin yes
 Change to:
 PermitRootLogin without-password
 ```
+Finally restart the SSH service to reload the configuration
 
 `systemctl restart ssh`
 
