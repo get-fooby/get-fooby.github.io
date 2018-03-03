@@ -74,13 +74,13 @@ Once the key pair is generated, we need to upload this to the server.
 ### Uploading the keys from Linux to Linux
 For Linux there are a few options, the easiest is the `ssh-copy-id` command. 
 
-    ssh-copy-id demo@198.51.100.0
+    ssh-copy-id username@1.2.3.4
 
 This will automatically connect and update the `authorized_keys` file.
 
 Alternatively you can use pipe a few commands together like this
 
-    cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+    cat ~/.ssh/id_rsa.pub | ssh username@1.2.3.4 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 ### Uploading the keys from Windows to Linux
 For Windows you will need to ssh to the server and edit the `authorized_keys` file in `nano` or `vi` then append the contents of the public key file `id_rsa.pub` to the end.
@@ -130,7 +130,7 @@ In order to load keys into PuTTY Agent at Windows bootup, you can copy the PuTTY
 ## Linux
 If the keys are successfully installed to the remote server you can simply logon with
 
-`ssh username@remote_host`
+`ssh username@1.2.3.4`
 
 If you did not supply a passphrase for your private key, you will be logged in immediately. If you supplied a passphrase for the private key when you created the key, you will be required to enter it now. Afterwards, a new shell session should be spawned for you with the account on the remote system.
 
