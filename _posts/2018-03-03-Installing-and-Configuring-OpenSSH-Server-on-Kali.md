@@ -15,11 +15,7 @@ Once installed, configure the `ssh` server to run at bootup
 # Configuring OpenSSH
 Root does not have access to use SSH by default, so if you don't create additional users you will need to allow `root` to logon. 
 
-To do this edit the config with `nano /etc/ssh/sshd_config` and change the `#PermitRootLogin prohibit-password` to remove the # comment.
-
-In addition to removing the comment, we will edit the line to allow us to logon with ssh. We will secure this later.
-
-This will allow us to copy the keys to the server instead of editing the `authorized_keys` file manually.
+To do this we will edit the config file `/etc/ssh/sshd_config`.
 
 ```
 nano /etc/ssh/sshd_config
@@ -28,6 +24,9 @@ Edit from:
 Change to:
 PermitRootLogin yes
 ```
+
+We set `PermitRootLogin` to yes so we can copy the keys to the server with a tool instead of editing the `authorized_keys` file manually.
+
 # Creating SSH Keys
 
 Instead of typing the password over the ssh session, OpenSSH supports public key cryptography with the use of a Private/Public key pair.
