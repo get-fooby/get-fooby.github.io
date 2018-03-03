@@ -17,7 +17,7 @@ Root does not have access to use SSH by default, so if you don't create addition
 
 To do this edit the config with `nano /etc/ssh/sshd_config` and change the `#PermitRootLogin prohibit-password` to remove the # comment.
 
-Before we take this, to make life easier in a momemnt, we will remove the comment and set it to `yes`.
+In addition to removing the comment, we will edit the line to allow us to logon with ssh. We will secure this later.
 
 This will allow us to copy the keys to the server instead of editing the `authorized_keys` file manually.
 
@@ -33,12 +33,23 @@ PermitRootLogin yes
 Instead of typing the password over the ssh session, OpenSSH supports public key cryptography with the use of a Private/Public key pair.
 
 ## Generate the keys
+
+Recently malware has been noted to collect private keys on behalf of the malicous actor and retain these for use at any point. Adding a passphrase is incredibly important. We can address the inconvenience of a passphrase for Windows clients later on.
+
+### Generating keys on Windows with PuTTY Key Generator
+1. Open PuTTY Key Generator (`puttygen.exe`)
+2. The defaults are acceptable, RSA/2048, click Generate
+3. Randomly move the mouse cursor over the window to generate randomness
+4. Specify a passphrase
+5. Click `Save private key` and `Save public key`
+
+### Generating keys on Linux
 ```
 ssh-keygen -t rsa
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/demo/.ssh/id_rsa): 
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
+Enter passphrase (empty for no passphrase): **********
+Enter same passphrase again: **********
 Your identification has been saved in /home/demo/.ssh/id_rsa.
 Your public key has been saved in /home/demo/.ssh/id_rsa.pub.
 The key fingerprint is:
@@ -89,3 +100,37 @@ PermitRootLogin without-password
 ```
 
 `systemctl restart ssh`
+
+# Using the SSH keys
+
+## Windows (PuTTY)
+
+Using PuTTY there are two main options, the more secure and the less secure options. The security is actually dependant on the addition of a passphrase, however typing a passphrase is about as inconvenient as typing a password. The PuTTY Agent can handle providing authentication to PuTTY as needed without having to retype the password each time its needed.
+
+### PuTTY Agent (More Secure)
+1. Open PuTTY Agent
+    PuTTY Agent opens in the Notification Area on Windows (near the clock)
+2. Right click and choose Add Key
+3. Choose Add Key
+4. Locate the Key file and choose Open
+5. Enter the Passphrase
+    This is the only time you will need to type the passphrase, even if you connect to multiple servers (assuming they all have your public key installed)
+
+#### Bonus PuTTY Agent Tip
+In order to load keys into PuTTY Agent at Windows bootup, you can copy the PuTTY Agent shortcut to `C:\programdata\Microsoft\Windows\Start Menu\Programs\StartUp` and append the path to the key files after the executable name.
+
+`C:\Program Files\PuTTY\pageant.exe" C:\key1.ppk C:\key2.ppk`
+
+### PuTTY Config (Less Secure)
+1. Open PuTTY and add the IP Address / name of the server
+2. Under Connection/Data specify the username
+3. Under Connection/SSH/Auth Specify the location of the private key file
+4. Under Session specify a name in the Saved Sessions section, and Click Save
+
+## Linux
+If the keys are successfully installed to the remote server you can simply logon with
+
+`ssh username@remote_host`
+
+If you did not supply a passphrase for your private key, you will be logged in immediately. If you supplied a passphrase for the private key when you created the key, you will be required to enter it now. Afterwards, a new shell session should be spawned for you with the account on the remote system.
+
