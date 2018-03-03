@@ -4,10 +4,13 @@ published: false
 ---
 
 # Installing OpenSSH
-1. Installing OpenSSH is very easy with `apt` on Kali.
-    `apt install openssh-server`
-2. Once installed, configure the `ssh` server to run at bootup
-    `systemctl enable ssh`
+Installing OpenSSH is very easy with `apt` on Kali.
+
+`apt install openssh-server`
+
+Once installed, configure the `ssh` server to run at bootup
+
+`systemctl enable ssh`
 
 # Configuring OpenSSH
 Root does not have access to use SSH by default, so if you don't create additional users you will need to allow `root` to logon. 
