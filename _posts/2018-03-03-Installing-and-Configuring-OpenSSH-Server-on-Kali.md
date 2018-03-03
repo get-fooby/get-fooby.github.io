@@ -6,11 +6,11 @@ published: true
 # Installing OpenSSH
 Installing OpenSSH is very easy with `apt` on Kali.
 
-`apt install openssh-server`
+    apt install openssh-server
 
 Once installed, configure the `ssh` server to run at bootup
 
-`systemctl enable ssh`
+    systemctl enable ssh
 
 # Configuring OpenSSH
 Root does not have access to use SSH by default, so if you don't create additional users you will need to allow `root` to logon. 
@@ -74,13 +74,13 @@ Once the key pair is generated, we need to upload this to the server.
 ### Uploading the keys from Linux to Linux
 For Linux there are a few options, the easiest is the `ssh-copy-id` command. 
 
-    `ssh-copy-id demo@198.51.100.0`
+    ssh-copy-id demo@198.51.100.0
 
 This will automatically connect and update the `authorized_keys` file.
 
 Alternatively you can use pipe a few commands together like this
 
-`cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"`
+    cat ~/.ssh/id_rsa.pub | ssh demo@198.51.100.0 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 ### Uploading the keys from Windows to Linux
 For Windows you will need to ssh to the server and edit the `authorized_keys` file in `nano` or `vi` then append the contents of the public key file `id_rsa.pub` to the end.
