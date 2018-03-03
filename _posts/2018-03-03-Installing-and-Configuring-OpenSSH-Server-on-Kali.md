@@ -83,7 +83,10 @@ Alternatively you can use pipe a few commands together like this
     cat ~/.ssh/id_rsa.pub | ssh username@1.2.3.4 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 ### Uploading the keys from Windows to Linux
-For Windows you will need to ssh to the server and edit the `authorized_keys` file in `nano` or `vi` then append the contents of the public key file `id_rsa.pub` to the end.
+1. Open the Private Key in PuTTYGen
+2. Click into the "Public Key for pasting into OpenSSH `authorized_keys` file" window
+3. Right click and choose "Select All" and again, to choose "Copy"
+4. Connect via ssh to the server and edit the `authorized_keys` file in `nano` or `vi` then paste (right click once) and save the file.
 
 Restart the OpenSSH server with `systemctl restart ssh` to reload the config.
 
